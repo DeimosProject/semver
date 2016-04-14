@@ -10,7 +10,7 @@ class PreRelease
     const Beta = 2;
     const Dev = 0;
     
-    const Production = 9;
+    const Stable = 9;
 
     /**
      * @param $string
@@ -38,7 +38,7 @@ class PreRelease
 
             case 'stable':
             default:
-                return self::Production;
+                return self::Stable;
 
         }
 

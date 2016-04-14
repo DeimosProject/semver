@@ -55,7 +55,7 @@ class Semver
 
         $match = new Match('~(alpha|beta|rc|release-candidate|production|stable)\.*(\d*)~i', $string);
 
-        $this->preRelease = PreRelease::getValue($match->get(1, 'production'));
+        $this->preRelease = PreRelease::getValue($match->get(1, 'stable'));
         $this->build = $match->get(2, 0);
 
         $match = new Match('~\+([\w-]+)~i', $string);

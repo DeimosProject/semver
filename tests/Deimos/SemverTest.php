@@ -22,9 +22,9 @@ class SemverTest extends \PHPUnit_Framework_TestCase
     public function providerSmv()
     {
         return array(
-            array('1', 1, 0, 0, PreRelease::Production, 0, null),
-            array('1.1', 1, 1, 0, PreRelease::Production, 0, null),
-            array('1.1.1', 1, 1, 1, PreRelease::Production, 0, null),
+            array('1', 1, 0, 0, PreRelease::Stable, 0, null),
+            array('1.1', 1, 1, 0, PreRelease::Stable, 0, null),
+            array('1.1.1', 1, 1, 1, PreRelease::Stable, 0, null),
 
             array('1-alpha.1', 1, 0, 0, PreRelease::Alpha, 1, null),
             array('1-alpha', 1, 0, 0, PreRelease::Alpha, 0, null),

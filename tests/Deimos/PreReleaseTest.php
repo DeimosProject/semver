@@ -17,7 +17,7 @@ class PreReleaseTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(PreRelease::getValue('dev'), PreRelease::Dev);
 
-        $this->assertEquals(PreRelease::getValue('undef'), PreRelease::Production); // default
+        $this->assertEquals(PreRelease::getValue('undef'), PreRelease::Stable); // default
     }
 
 }
