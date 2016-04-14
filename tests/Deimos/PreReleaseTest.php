@@ -7,20 +7,34 @@ class PreReleaseTest extends \PHPUnit_Framework_TestCase
 
     public function testGetValue()
     {
-        $this->assertEquals(PreRelease::getValue('beta'), PreRelease::BETA);
+        
+        $pr = new PreRelease('beta');
+        $this->assertEquals((string)$pr, (string)PreRelease::BETA);
 
-        $this->assertEquals(PreRelease::getValue('alpha'), PreRelease::ALPHA);
-        $this->assertEquals(PreRelease::getValue('Alpha'), PreRelease::ALPHA);
+        $pr = new PreRelease('alpha');
+        $this->assertEquals((string)$pr, (string)PreRelease::ALPHA);
 
-        $this->assertEquals(PreRelease::getValue('rc'), PreRelease::RELEASE_CANDIDATE);
-        $this->assertEquals(PreRelease::getValue('release-candidate'), PreRelease::RELEASE_CANDIDATE);
+        $pr = new PreRelease('Alpha');
+        $this->assertEquals((string)$pr, (string)PreRelease::ALPHA);
 
-        $this->assertEquals(PreRelease::getValue('gm'), PreRelease::GOLD_MASTER);
-        $this->assertEquals(PreRelease::getValue('gold-master'), PreRelease::GOLD_MASTER);
+        $pr = new PreRelease('rc');
+        $this->assertEquals((string)$pr, (string)PreRelease::RELEASE_CANDIDATE);
 
-        $this->assertEquals(PreRelease::getValue('dev'), PreRelease::DEV);
+        $pr = new PreRelease('release-candidate');
+        $this->assertEquals((string)$pr, (string)PreRelease::RELEASE_CANDIDATE);
 
-        $this->assertEquals(PreRelease::getValue('undef'), PreRelease::STABLE); // default
+        $pr = new PreRelease('gm');
+        $this->assertEquals((string)$pr, (string)PreRelease::GOLD_MASTER);
+
+        $pr = new PreRelease('gold-master');
+        $this->assertEquals((string)$pr, (string)PreRelease::GOLD_MASTER);
+
+        $pr = new PreRelease('dev');
+        $this->assertEquals((string)$pr, (string)PreRelease::DEV);
+
+        $pr = new PreRelease('undef');
+        $this->assertEquals((string)$pr, (string)PreRelease::STABLE); // default
+        
     }
 
 }

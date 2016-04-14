@@ -59,7 +59,9 @@ class Semver
         // preRelease
         $match = new Match('~(alpha|beta|rc|release-candidate|production|stable|gm|gold-master)\.*(\d*)~i', $string);
 
-        $this->preRelease = PreRelease::getValue($match->get(1, 'stable'));
+        $preRelease = new PreRelease($match->get(1, 'stable'));
+
+        $this->preRelease = (string)$preRelease;
         $this->build = $match->get(2, 0);
 
         // get metadata

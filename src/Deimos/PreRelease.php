@@ -7,44 +7,57 @@ class PreRelease
 
     const GOLD_MASTER = 4;
     const RELEASE_CANDIDATE = 3; // rc
-    
+
     const ALPHA = 1;
     const BETA = 2;
     const DEV = 0;
-    
+
     const STABLE = 9;
 
     /**
-     * @param $string
-     * @return int
+     * @var string
      */
-    public static function getValue($string)
+    private $value;
+
+    /**
+     * PreRelease constructor.
+     * @param $string
+     */
+    public function __construct($string)
+    {
+        $this->value = $string;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
     {
 
-        $string = mb_strtolower($string);
+        $string = mb_strtolower($this->value);
 
         switch ($string) {
 
             case 'dev':
-                return self::DEV;
+                return (string)self::DEV;
 
             case 'rc':
             case 'release-candidate':
-                return self::RELEASE_CANDIDATE;
+                return (string)self::RELEASE_CANDIDATE;
 
             case 'gm':
             case 'gold-master':
-                return self::GOLD_MASTER;
+                return (string)self::GOLD_MASTER;
 
             case 'alpha':
-                return self::ALPHA;
+                return (string)self::ALPHA;
 
             case 'beta':
-                return self::BETA;
+                return (string)self::BETA;
 
             case 'stable':
             default:
-                return self::STABLE;
+                return (string)self::STABLE;
 
         }
 
