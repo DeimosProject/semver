@@ -5,14 +5,14 @@ namespace Deimos;
 class PreRelease
 {
 
-    const GoldMaster = 4;
-    const ReleaseCandidate = 3; // rc
+    const GOLD_MASTER = 4;
+    const RELEASE_CANDIDATE = 3; // rc
     
-    const Alpha = 1;
-    const Beta = 2;
-    const Dev = 0;
+    const ALPHA = 1;
+    const BETA = 2;
+    const DEV = 0;
     
-    const Stable = 9;
+    const STABLE = 9;
 
     /**
      * @param $string
@@ -26,25 +26,25 @@ class PreRelease
         switch ($string) {
 
             case 'dev':
-                return self::Dev;
+                return self::DEV;
 
             case 'rc':
             case 'release-candidate':
-                return self::ReleaseCandidate;
+                return self::RELEASE_CANDIDATE;
 
             case 'gm':
             case 'gold-master':
-                return self::GoldMaster;
+                return self::GOLD_MASTER;
 
             case 'alpha':
-                return self::Alpha;
+                return self::ALPHA;
 
             case 'beta':
-                return self::Beta;
+                return self::BETA;
 
             case 'stable':
             default:
-                return self::Stable;
+                return self::STABLE;
 
         }
 
