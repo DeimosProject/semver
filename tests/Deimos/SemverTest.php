@@ -71,6 +71,8 @@ class SemverTest extends \PHPUnit_Framework_TestCase
             array('1-beta.16+hello', '1-alpha.16+world', true, false, false),
 
             array('1.999.113123-beta.16+hello', '1.999.113123-rc+world', false, true, false),
+
+            array('v3.14.1592-beta2.+firefox', 'v3.14.1592-beta3.+firefox', false, true, false),
         );
     }
 
