@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1460670574">
-  <project timestamp="1460670574">
+<coverage generated="1460671080">
+  <project timestamp="1460671080">
     <package name="Deimos">
       <file name="O:\OpenServer\domains\semver\src\Deimos/Comparator.php">
         <class name="Comparator" namespace="Deimos">
