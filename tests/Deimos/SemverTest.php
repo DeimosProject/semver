@@ -70,12 +70,12 @@ class SemverTest extends \PHPUnit_Framework_TestCase
         $semver1 = new Semver($semver1);
         $semver2 = new Semver($semver2);
 
-        $this->assertTrue(Compare::greaterThan($semver1, $semver2) === $greater);
-        $this->assertTrue(Compare::lessThan($semver1, $semver2) === $less);
-        $this->assertTrue(Compare::equalTo($semver1, $semver2) === $equal);
+        $this->assertTrue(Comparator::greaterThan($semver1, $semver2) === $greater);
+        $this->assertTrue(Comparator::lessThan($semver1, $semver2) === $less);
+        $this->assertTrue(Comparator::equalTo($semver1, $semver2) === $equal);
 
-        $this->assertTrue(Compare::greaterThanOrEqualTo($semver1, $semver2) === ($greater || $equal));
-        $this->assertTrue(Compare::lessThanOrEqualTo($semver1, $semver2) === ($less || $equal));
+        $this->assertTrue(Comparator::greaterThanOrEqualTo($semver1, $semver2) === ($greater || $equal));
+        $this->assertTrue(Comparator::lessThanOrEqualTo($semver1, $semver2) === ($less || $equal));
     }
 
     public function providerSmvCompare()

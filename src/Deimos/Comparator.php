@@ -2,7 +2,7 @@
 
 namespace Deimos;
 
-class Compare
+class Comparator
 {
 
     /**
