@@ -32,14 +32,14 @@ class Match
     }
 
     /**
-     * @param $ind
+     * @param $index
      * @param null $default
      * @return mixed
      */
-    public function get($ind, $default = null)
+    public function get($index, $default = null)
     {
-        if (!empty($this->value[$ind]))
-            return $this->value[$ind];
+        if (!empty($this->value[$index]))
+            return $this->value[$index];
         return $default;
     }
 
