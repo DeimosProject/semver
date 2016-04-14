@@ -65,7 +65,7 @@ class Semver
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMajor()
     {
@@ -73,7 +73,7 @@ class Semver
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getMinor()
     {
@@ -81,7 +81,7 @@ class Semver
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getPatch()
     {
@@ -89,7 +89,7 @@ class Semver
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getPreRelease()
     {
@@ -97,7 +97,7 @@ class Semver
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getBuild()
     {
@@ -105,7 +105,7 @@ class Semver
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMetadata()
     {
