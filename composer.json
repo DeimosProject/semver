@@ -1,0 +1,17 @@
+{
+  "name": "deimos/semver",
+  "authors": [
+    {
+      "name": "REZ1DENT3",
+      "email": "maksim.babichev95@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Deimos\\": "src/Deimos/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.3"
+  }
+}
