@@ -76,6 +76,8 @@ class SemverTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(Comparator::greaterThanOrEqualTo($semver1, $semver2) === ($greater || $equal));
         $this->assertTrue(Comparator::lessThanOrEqualTo($semver1, $semver2) === ($less || $equal));
+
+        $this->assertTrue(Comparator::notEqualTo($semver1, $semver2) === !$equal);
     }
 
     public function providerSmvCompare()

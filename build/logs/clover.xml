@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1460668598">
-  <project timestamp="1460668598">
+<coverage generated="1460669868">
+  <project timestamp="1460669868">
     <package name="Deimos">
       <file name="O:\OpenServer\domains\semver\src\Deimos/Comparator.php">
         <class name="Comparator" namespace="Deimos">
-          <metrics complexity="6" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="12" coveredelements="10"/>
+          <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
         </class>
         <line num="13" type="method" name="greaterThan" visibility="public" complexity="1" crap="1" count="12"/>
         <line num="15" type="stmt" count="12"/>
@@ -16,9 +16,9 @@
         <line num="45" type="stmt" count="12"/>
         <line num="53" type="method" name="equalTo" visibility="public" complexity="1" crap="1" count="12"/>
         <line num="55" type="stmt" count="12"/>
-        <line num="63" type="method" name="notEqualTo" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="65" type="stmt" count="0"/>
-        <metrics loc="67" ncloc="37" classes="1" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="12" coveredelements="10"/>
+        <line num="63" type="method" name="notEqualTo" visibility="public" complexity="1" crap="1" count="12"/>
+        <line num="65" type="stmt" count="12"/>
+        <metrics loc="67" ncloc="37" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
       </file>
       <file name="O:\OpenServer\domains\semver\src\Deimos/Match.php">
         <class name="Match" namespace="Deimos">
@@ -106,6 +106,6 @@
         <metrics loc="141" ncloc="86" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="35" coveredelements="35"/>
       </file>
     </package>
-    <metrics files="4" loc="326" ncloc="209" classes="4" methods="20" coveredmethods="19" conditionals="0" coveredconditionals="0" statements="59" coveredstatements="58" elements="79" coveredelements="77"/>
+    <metrics files="4" loc="326" ncloc="209" classes="4" methods="20" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="59" coveredstatements="59" elements="79" coveredelements="79"/>
   </project>
 </coverage>
