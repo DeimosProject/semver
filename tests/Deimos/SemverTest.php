@@ -22,6 +22,8 @@ class SemverTest extends \PHPUnit_Framework_TestCase
     public function providerSmv()
     {
         return array(
+            array('v3.14.1592-beta2.+firefox', 3, 14, 1592, PreRelease::Beta, 2, 'firefox'),
+
             array('1', 1, 0, 0, PreRelease::Stable, 0, null),
             array('1.1', 1, 1, 0, PreRelease::Stable, 0, null),
             array('1.1.1', 1, 1, 1, PreRelease::Stable, 0, null),
