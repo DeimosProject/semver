@@ -48,23 +48,34 @@ class SemverTest extends \PHPUnit_Framework_TestCase
             array('888345.111.123-alpha', 888345, 111, 123, PreRelease::Alpha, 0, null),
             array('1.0.1-beta+pre-release', 1, 0, 1, PreRelease::Beta, 0, 'pre-release'),
             array('1.0.1-rc.88+hello-world', 1, 0, 1, PreRelease::ReleaseCandidate, 88, 'hello-world'),
+
+            array('1-gm', 1, 0, 0, PreRelease::GoldMaster, 0, null),
+            array('1-gm+deimos-project', 1, 0, 0, PreRelease::GoldMaster, 0, 'deimos-project'),
+
+            array('1.1-gm', 1, 1, 0, PreRelease::GoldMaster, 0, null),
+            array('1.1-gold-master+deimos-project', 1, 1, 0, PreRelease::GoldMaster, 0, 'deimos-project'),
+
+            array('1.0.1-gm', 1, 0, 1, PreRelease::GoldMaster, 0, null),
+            array('1.0.1-gold-master+deimos-project', 1, 0, 1, PreRelease::GoldMaster, 0, 'deimos-project'),
+
+            array('1.0.1-gm.88+deimos-project', 1, 0, 1, PreRelease::GoldMaster, 88, 'deimos-project'),
         );
     }
 
     /**
      * @dataProvider providerSmvCompare
      */
-    public function testSmvCompare($s1, $s2, $g, $l, $e)
+    public function testSmvCompare($semver1, $semver2, $greater, $less, $equal)
     {
-        $s1 = new Semver($s1);
-        $s2 = new Semver($s2);
+        $semver1 = new Semver($semver1);
+        $semver2 = new Semver($semver2);
 
-        $this->assertTrue(((string)$s1 > $s2) === $g);
-        $this->assertTrue(((string)$s1 < $s2) === $l);
-        $this->assertTrue(((string)$s1 == $s2) === $e);
+        $this->assertTrue(Compare::greaterThan($semver1, $semver2) === $greater);
+        $this->assertTrue(Compare::lessThan($semver1, $semver2) === $less);
+        $this->assertTrue(Compare::equalTo($semver1, $semver2) === $equal);
 
-        $this->assertTrue(((string)$s1 >= $s2) === ($g || $e));
-        $this->assertTrue(((string)$s1 <= $s2) === ($l || $e));
+        $this->assertTrue(Compare::greaterThanOrEqualTo($semver1, $semver2) === ($greater || $equal));
+        $this->assertTrue(Compare::lessThanOrEqualTo($semver1, $semver2) === ($less || $equal));
     }
 
     public function providerSmvCompare()
@@ -78,7 +89,7 @@ class SemverTest extends \PHPUnit_Framework_TestCase
 
             array('1.0.0-rc.1', '1-rc.1', false, false, true),
 
-            array('1.0.0-rc.1', '1-rc1.+gold-master', false, false, true), // fixme
+            array('1.0.0-rc.1', '1-rc1.+gold-master', false, false, true),
 
             array('1-beta.16', '1-alpha.16', true, false, false),
             array('1-beta16', '1-alpha.16', true, false, false),

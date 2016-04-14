@@ -5,7 +5,9 @@ namespace Deimos;
 class PreRelease
 {
 
+    const GoldMaster = 4;
     const ReleaseCandidate = 3; // rc
+    
     const Alpha = 1;
     const Beta = 2;
     const Dev = 0;
@@ -29,6 +31,10 @@ class PreRelease
             case 'rc':
             case 'release-candidate':
                 return self::ReleaseCandidate;
+
+            case 'gm':
+            case 'gold-master':
+                return self::GoldMaster;
 
             case 'alpha':
                 return self::Alpha;
