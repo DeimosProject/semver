@@ -23,6 +23,7 @@ class SemverTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('v3.14.1592-beta2.+firefox', 3, 14, 1592, PreRelease::Beta, 2, 'firefox'),
+            array('v3.14.1592-beta65+firefox', 3, 14, 1592, PreRelease::Beta, 65, 'firefox'),
 
             array('1', 1, 0, 0, PreRelease::Stable, 0, null),
             array('1.1', 1, 1, 0, PreRelease::Stable, 0, null),
@@ -32,6 +33,16 @@ class SemverTest extends \PHPUnit_Framework_TestCase
             array('1-alpha', 1, 0, 0, PreRelease::Alpha, 0, null),
             array('1-rc', 1, 0, 0, PreRelease::ReleaseCandidate, 0, null),
             array('1-rc+hello-world', 1, 0, 0, PreRelease::ReleaseCandidate, 0, 'hello-world'),
+
+            array('1.1-alpha.1', 1, 1, 0, PreRelease::Alpha, 1, null),
+            array('1.1-alpha', 1, 1, 0, PreRelease::Alpha, 0, null),
+            array('1.1-rc', 1, 1, 0, PreRelease::ReleaseCandidate, 0, null),
+            array('1.1-rc+hello-world', 1, 1, 0, PreRelease::ReleaseCandidate, 0, 'hello-world'),
+
+            array('1.0.1-alpha.1', 1, 0, 1, PreRelease::Alpha, 1, null),
+            array('1.0.1-alpha', 1, 0, 1, PreRelease::Alpha, 0, null),
+            array('1.0.1-rc', 1, 0, 1, PreRelease::ReleaseCandidate, 0, null),
+            array('1.0.1-rc+hello-world', 1, 0, 1, PreRelease::ReleaseCandidate, 0, 'hello-world'),
 
             array('1.1-alpha.1', 1, 1, 0, PreRelease::Alpha, 1, null),
             array('888345.111.123-alpha', 888345, 111, 123, PreRelease::Alpha, 0, null),
@@ -48,12 +59,12 @@ class SemverTest extends \PHPUnit_Framework_TestCase
         $s1 = new Semver($s1);
         $s2 = new Semver($s2);
 
-        $this->assertTrue(($s1 > $s2) === $g);
-        $this->assertTrue(($s1 < $s2) === $l);
-        $this->assertTrue(($s1 == $s2) === $e);
+        $this->assertTrue(((string)$s1 > $s2) === $g);
+        $this->assertTrue(((string)$s1 < $s2) === $l);
+        $this->assertTrue(((string)$s1 == $s2) === $e);
 
-        $this->assertTrue(($s1 >= $s2) === ($g || $e));
-        $this->assertTrue(($s1 <= $s2) === ($l || $e));
+        $this->assertTrue(((string)$s1 >= $s2) === ($g || $e));
+        $this->assertTrue(((string)$s1 <= $s2) === ($l || $e));
     }
 
     public function providerSmvCompare()
@@ -66,13 +77,18 @@ class SemverTest extends \PHPUnit_Framework_TestCase
             array('1.0.1-beta.1', '1.0.1-alpha.16', true, false, false),
 
             array('1.0.0-rc.1', '1-rc.1', false, false, true),
+
+            array('1.0.0-rc.1', '1-rc1.+gold-master', false, false, true), // fixme
+
             array('1-beta.16', '1-alpha.16', true, false, false),
+            array('1-beta16', '1-alpha.16', true, false, false),
 
             array('1-beta.16+hello', '1-alpha.16+world', true, false, false),
 
             array('1.999.113123-beta.16+hello', '1.999.113123-rc+world', false, true, false),
 
             array('v3.14.1592-beta2.+firefox', 'v3.14.1592-beta3.+firefox', false, true, false),
+            array('v3.14.1592-beta65+firefox', 'v3.14.1592-beta65+firefox', false, false, true),
         );
     }
 

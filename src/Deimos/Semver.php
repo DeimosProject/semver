@@ -42,22 +42,27 @@ class Semver
     public function __construct($string)
     {
 
+        // ltrim for string
         $match = new Match('~(\d+[\w\W]*)~', $string);
 
+        // ->get(0)
         $string = $match->current();
-        $string = trim($string);
+        $string = trim($string); // remove spaces
 
-        $match = new Match('~(\d+)\.*(\d+){0,1}\.*(\d+){0,1}~', $string);
+        // get(major, minor, patch)
+        $match = new Match('~(\d+)\.*(\d*)\.*(\d*)~', $string);
 
         $this->major = $match->get(1, 0);
         $this->minor = $match->get(2, 0);
         $this->patch = $match->get(3, 0);
 
+        // preRelease
         $match = new Match('~(alpha|beta|rc|release-candidate|production|stable)\.*(\d*)~i', $string);
 
         $this->preRelease = PreRelease::getValue($match->get(1, 'stable'));
         $this->build = $match->get(2, 0);
 
+        // get metadata
         $match = new Match('~\+([\w-]+)~i', $string);
 
         $this->metadata = $match->get(1);
@@ -126,8 +131,10 @@ class Semver
             $this->getBuild()
         );
 
-        return implode('.', $data);
-        
+        $data = implode('.', $data);
+
+        return $data;
+
     }
 
 }
