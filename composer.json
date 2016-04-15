@@ -1,14 +1,30 @@
 {
   "name": "deimos/semver",
+  "description": "Semver library that offers utilities, version constraint parsing.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "semver",
+    "semantic",
+    "versioning"
+  ],
   "authors": [
     {
-      "name": "REZ1DENT3",
+      "name": "Babichev Maxim",
       "email": "maksim.babichev95@gmail.com"
     }
   ],
+  "support": {
+    "issues": "https://github.com/REZ1DENT3/semver/issues"
+  },
   "autoload": {
     "psr-4": {
       "Deimos\\": "src/Deimos/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
     }
   },
   "require-dev": {
