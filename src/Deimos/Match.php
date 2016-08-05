@@ -12,6 +12,7 @@ class Match
 
     /**
      * Match constructor.
+     *
      * @param $regexp string
      * @param $string string
      */
@@ -27,19 +28,26 @@ class Match
     public function current()
     {
         if (count($this->value))
+        {
             return current($this->value);
+        }
+
         throw new \InvalidArgumentException;
     }
 
     /**
-     * @param $index
+     * @param      $index
      * @param null $default
+     *
      * @return mixed
      */
     public function get($index, $default = null)
     {
         if (!empty($this->value[$index]))
+        {
             return $this->value[$index];
+        }
+
         return $default;
     }
 

@@ -6,6 +6,14 @@ class SemverTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
+     * @param $string
+     * @param $major
+     * @param $minor
+     * @param $patch
+     * @param $preRelease
+     * @param $build
+     * @param $metadata
+     *
      * @dataProvider providerSmv
      */
     public function testSmv($string, $major, $minor, $patch, $preRelease, $build, $metadata)
@@ -19,6 +27,9 @@ class SemverTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($sv->getMetadata(), $metadata);
     }
 
+    /**
+     * @return array
+     */
     public function providerSmv()
     {
         return array(
@@ -63,6 +74,12 @@ class SemverTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param $semver1
+     * @param $semver2
+     * @param $greater
+     * @param $less
+     * @param $equal
+     *
      * @dataProvider providerSmvCompare
      */
     public function testSmvCompare($semver1, $semver2, $greater, $less, $equal)
@@ -80,6 +97,9 @@ class SemverTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(Comparator::notEqualTo($semver1, $semver2) === !$equal);
     }
 
+    /**
+     * @return array
+     */
     public function providerSmvCompare()
     {
         return array(

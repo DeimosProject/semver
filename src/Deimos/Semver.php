@@ -37,6 +37,7 @@ class Semver
 
     /**
      * Semver constructor.
+     *
      * @param $string string
      */
     public function __construct($string)
@@ -62,12 +63,40 @@ class Semver
         $preRelease = new PreRelease($match->get(1, 'stable'));
 
         $this->preRelease = (string)$preRelease;
-        $this->build = $match->get(2, 0);
+        $this->build      = $match->get(2, 0);
 
         // get metadata
         $match = new Match('~\+([\w-]+)~i', $string);
 
         $this->metadata = $match->get(1);
+
+    }
+
+    /**
+     * @return string
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+
+        $data = array(
+            $this->getMajor(),
+            $this->getMinor(),
+            $this->getPatch(),
+            $this->getPreRelease(),
+            $this->getBuild()
+        );
+
+        $data = implode('.', $data);
+
+        return $data;
 
     }
 
@@ -109,34 +138,6 @@ class Semver
     public function getBuild()
     {
         return $this->build;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMetadata()
-    {
-        return $this->metadata;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-
-        $data = array(
-            $this->getMajor(),
-            $this->getMinor(),
-            $this->getPatch(),
-            $this->getPreRelease(),
-            $this->getBuild()
-        );
-
-        $data = implode('.', $data);
-
-        return $data;
-
     }
 
 }

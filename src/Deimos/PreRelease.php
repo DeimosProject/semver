@@ -5,12 +5,12 @@ namespace Deimos;
 class PreRelease
 {
 
-    const GOLD_MASTER = 4;
+    const GOLD_MASTER       = 4;
     const RELEASE_CANDIDATE = 3; // rc
 
     const ALPHA = 1;
-    const BETA = 2;
-    const DEV = 0;
+    const BETA  = 2;
+    const DEV   = 0;
 
     const STABLE = 9;
 
@@ -21,6 +21,7 @@ class PreRelease
 
     /**
      * PreRelease constructor.
+     *
      * @param $string
      */
     public function __construct($string)
@@ -36,7 +37,8 @@ class PreRelease
 
         $string = mb_strtolower($this->value);
 
-        switch ($string) {
+        switch ($string)
+        {
 
             case 'dev':
                 return (string)self::DEV;

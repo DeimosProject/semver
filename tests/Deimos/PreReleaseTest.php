@@ -7,7 +7,7 @@ class PreReleaseTest extends \PHPUnit_Framework_TestCase
 
     public function testGetValue()
     {
-        
+
         $pr = new PreRelease('beta');
         $this->assertEquals((string)$pr, (string)PreRelease::BETA);
 
@@ -34,7 +34,7 @@ class PreReleaseTest extends \PHPUnit_Framework_TestCase
 
         $pr = new PreRelease('undef');
         $this->assertEquals((string)$pr, (string)PreRelease::STABLE); // default
-        
+
     }
 
 }
